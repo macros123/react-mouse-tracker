@@ -1,9 +1,6 @@
 import React from 'react';
-
-type PositinState = {
-    x: number,
-    y: number
-}
+import Cat from './Cat';
+import {PositinState} from '../types/Types';
 
 export default class MouseTracker extends React.Component<{}, PositinState> {
     constructor(props: object) {
@@ -28,6 +25,7 @@ export default class MouseTracker extends React.Component<{}, PositinState> {
         <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
           <h1>Перемещайте курсор мыши!</h1>
           <p>Текущее положение курсора мыши: ({this.state.x},{this.state.y})</p>
+          <Cat mouse={this.state}/>
         </div>
       );
     }
