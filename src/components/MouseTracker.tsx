@@ -34,7 +34,7 @@ export default class MouseTracker extends React.Component<{}, MouseTrackIF> {
         y: this.state.y
       }
       return (
-        <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
+        <div className='container' style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
           <button onClick={this.handleClickButton}>Активировать лазеры</button>
           <h1>Перемещайте курсор мыши!</h1>
           <p>Текущее положение курсора мыши: ({this.state.x},{this.state.y})</p>
