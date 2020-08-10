@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MouseTracker from './components/MouseTracker';
+import {MouseTracker} from './components/MouseTracker';
 
 function App() {
   return (

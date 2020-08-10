@@ -1,46 +1,34 @@
-import React from 'react';
-import Cat from './Cat';
-import {MouseTrackIF} from '../types/Types';
+import React, { useState } from 'react';
+import { Cat } from './Cat';
 
-export default class MouseTracker extends React.Component<{}, MouseTrackIF> {
-    constructor(props: object) {
-      super(props);
-      this.handleMouseMove = this.handleMouseMove.bind(this);
-      this.handleClickButton = this.handleClickButton.bind(this);
-      this.state = { 
-          x: 0, 
-          y: 0,
-          isImageShow: false
-        };
-    }
-  
-    handleMouseMove(event: React.MouseEvent): void {
-        this.setState({
-            x: event.clientX,
-            y: event.clientY
-          });
-          
-    }
+export const MouseTracker = () => {
 
-    handleClickButton(): void {
-        this.setState((oldState) => {
-            return {isImageShow: !oldState.isImageShow}
-        })
-    }
-  
-    render() {
-      const position = {
-        x: this.state.x,
-        y: this.state.y
-      }
-      return (
-        <div className='container' style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
-          <button onClick={this.handleClickButton}>Активировать лазеры</button>
-          <h1>Перемещайте курсор мыши!</h1>
-          <p>Текущее положение курсора мыши: ({this.state.x},{this.state.y})</p>
-          {this.state.isImageShow && <Cat mouse={position} touch={this.handleClickButton}/>}
-          
-        </div>
-      );
-    }
+  const [x, changeX] = useState(0);
+  const [y, changeY] = useState(0);
+  const [isImageShow, changeImageShow] = useState(false);
+
+  function handleMouseMove(event: React.MouseEvent): void {
+    changeX(event.clientX);
+    changeY(event.clientY);
   }
+
+  function handleClickButton(): void {
+    changeImageShow(!isImageShow)
+  }
+
+  const position = {
+    x: x,
+    y: y
+  };
+
+  return (
+    <div className='container' style={{ height: '100vh' }} onMouseMove={handleMouseMove}>
+      <button onClick={handleClickButton}>Активировать лазеры</button>
+      <h1>Перемещайте курсор мыши!</h1>
+      <p>Текущее положение курсора мыши: ({x},{y})</p>
+      {isImageShow && <Cat mouse={position} touch={handleClickButton} />}
+
+    </div>
+  );
+
+}

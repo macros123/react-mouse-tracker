@@ -3,7 +3,7 @@ export interface PositinState {
     y: number
 }
 
-export interface MouseTrackIF extends PositinState{
+export interface MouseTrackIF extends PositinState {
     isImageShow: boolean
 }
 
