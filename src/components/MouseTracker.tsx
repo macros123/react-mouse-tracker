@@ -10,7 +10,7 @@ export default class MouseTracker extends React.Component<{}, MouseTrackIF> {
       this.state = { 
           x: 0, 
           y: 0,
-          isImageShow: true
+          isImageShow: false
         };
     }
   
